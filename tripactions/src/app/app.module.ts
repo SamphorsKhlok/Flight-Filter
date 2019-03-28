@@ -8,6 +8,7 @@ import { FlightsComponent } from './components/flights/flights.component';
 import { FilterPipe } from './pipes/filter.pipe';
 import {HttpClientModule} from '@angular/common/http';
 import { DurationPipe } from './pipes/duration.pipe';
+import { MydatePipe } from './pipes/mydate.pipe';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { DurationPipe } from './pipes/duration.pipe';
     FlightComponent,
     FlightsComponent,
     FilterPipe,
-    DurationPipe
+    DurationPipe,
+    MydatePipe
   ],
   imports: [
     BrowserModule,

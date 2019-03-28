@@ -1,23 +1,31 @@
 <div class="flight">
   <!--assume there is no image for the now-->
-  <!--<div class="col-m-2">-->
-    <!--<img src="" style="float: left" alt="image">-->
-  <!--</div>-->
+  <div class="col-m-1" style="padding: 0px">
+    <img width="100%" [src]="data['flight']['flightSegments'][0].highResAirlineLogoUrl" style="float: left" alt="image">
+  </div>
 
   <!--for flight info-->
-  <div class="col-m-3">
+  <div class="col-m-2">
     <div>{{data['flight']['flightSegments'][0]['airlineName']}}</div>
-    <div>{{data['flight']['flightSegments'][0]['departureDateAndTime'] | date:'short'}}</div>
-    <div>{{data['flight']['flightSegments'][0]['airlineCode']}}<span>{{data['flight']['flightSegments'][0]['flightNumber']}}</span></div>
-    <div></div>
+    <div>{{data['flight']['flightSegments'][0]['departureDateAndTime'] | mydate}}</div>
+    <div>
+      <span *ngFor="let f of data['flight']['flightSegments']; let i= index" style="display: inline-block" >
+         {{ f.airlineCode}}{{ f.flightNumber}}{{ i == data['flight']['flightSegments'].length-1? '':'*' }}
+      </span>
+    </div>
   </div>
 
   <!--for stop-->
-  <div class="col-m-3">
-    <div>{{data['flight']['flightSegments'].length}} stops</div>
-    <span *ngFor="let f of data['flight']['flightSegments']">
-        {{f['airlineName']}}
-    </span>
+  <div class="col-m-4">
+    <div>
+      <span>{{data['flight']['flightSegments'][0]['departureAirportCode']}} </span>
+      <span> - {{data['flight']['flightSegments'].length-1 ? data['flight']['flightSegments'].length-1+' Stop': 'Non Stop' }} - </span>
+      <span>{{data['flight']['flightSegments'][data.flight.flightSegments.length-1]['arrivalDateAndTime'] | mydate}}</span>
+      <span> {{data['flight']['flightSegments'][data.flight.flightSegments.length-1]['arrivalAirportCode']}}</span>
+    </div>
+    <!--<span style="display: inline-block" *ngFor="let f of data['flight']['flightSegments']">-->
+        <!--{{f['airlineName']}}-->
+    <!--</span>-->
   </div>
 
   <!--for duration-->
@@ -29,8 +37,8 @@
 
   <!--price and view-->
   <!--use pipe currency-->
-  <div class="col-m-3">
-    {{data['startingPrice']['basePrice'] | currency}}
+  <div class="col-m-2">
+    {{data['priceInfo']['totalPrice'] | currency}}
     <div><button mat-stroked-button>View</button></div>
   </div>
 </div>
