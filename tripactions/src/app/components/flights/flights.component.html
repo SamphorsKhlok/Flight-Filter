@@ -1,0 +1,9 @@
+<p>
+Airlines Filter
+</p>
+<div *ngFor="let airline of airlines;let i = index">
+  <div><input name="{{i}}" type="checkbox" (change)="updateFilter(i)">{{airline.label}} {{airline.price | currency}}</div>
+</div>
+
+<app-flight *ngFor="let flight of (flights| filter: filterList)" [data]="flight"></app-flight>
+

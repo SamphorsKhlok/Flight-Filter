@@ -1,0 +1,36 @@
+<div class="flight">
+  <!--assume there is no image for the now-->
+  <!--<div class="col-m-2">-->
+    <!--<img src="" style="float: left" alt="image">-->
+  <!--</div>-->
+
+  <!--for flight info-->
+  <div class="col-m-3">
+    <div>{{data['flight']['flightSegments'][0]['airlineName']}}</div>
+    <div>{{data['flight']['flightSegments'][0]['departureDateAndTime'] | date:'short'}}</div>
+    <div>{{data['flight']['flightSegments'][0]['airlineCode']}}<span>{{data['flight']['flightSegments'][0]['flightNumber']}}</span></div>
+    <div></div>
+  </div>
+
+  <!--for stop-->
+  <div class="col-m-3">
+    <div>{{data['flight']['flightSegments'].length}} stops</div>
+    <span *ngFor="let f of data['flight']['flightSegments']">
+        {{f['airlineName']}}
+    </span>
+  </div>
+
+  <!--for duration-->
+  <!--can custom duration pipe to display the clean h and  min-->
+  <div class="col-m-3">
+    <div>Duration</div>
+    <div>{{data['flight']['durationMinutes'] | duration }}</div>
+  </div>
+
+  <!--price and view-->
+  <!--use pipe currency-->
+  <div class="col-m-3">
+    {{data['startingPrice']['basePrice'] | currency}}
+    <div><button mat-stroked-button>View</button></div>
+  </div>
+</div>
