@@ -1,3 +1,4 @@
+- Update CSS file to make everything looks nicer
 - WebAPI is written using ExpressJS (Node.JS) to provide service for UI, install all packages first ```sudo npm install```,then to run use ```npm start``` using default port 3000
 - UI is written in Angular 7,install all packages first ```sudo npm install``` then to run use ```ng serve --aot```
 - I used pipe as a filter with Set data type to store the airlines being checked
