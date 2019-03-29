@@ -7,17 +7,17 @@ export class MydatePipe implements PipeTransform {
 
   transform(value: any, args?: any): any {
     const d = new Date(value);
-    let am = 'AM';
-    let hour = d.getHours();
+    let am = 'am';
+    let hour: any = d.getHours();
     if(hour > 12){
-      am = 'PM';
+      am = 'pm';
       hour = hour - 12;
     }
     if(hour < 10){
       hour = '0' + hour;
     }
-    let min = d.getMinutes();
-    if(min < 10){
+    let min: any = d.getMinutes();
+    if(min < 10) {
       min = '0' + min;
     }
     const month = d.getMonth();

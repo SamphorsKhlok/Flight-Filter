@@ -1,9 +1,16 @@
-<p>
-Airlines Filter
-</p>
-<div *ngFor="let airline of airlines;let i = index">
-  <div><input name="{{i}}" type="checkbox" (change)="updateFilter(i)">{{airline.label}} {{airline.price | currency}}</div>
+<!--assume that we only use meduim size screen for now-->
+<div class="col-m-2 filter">
+  <p>
+    Airlines Filter
+  </p>
+  <div class="item" *ngFor="let airline of airlines;let i = index">
+    <input name="{{i}}" type="checkbox" (change)="updateFilter(i)">
+    {{airline.label}}
+    <span class="price">{{airline.price | price}}</span>
+  </div>
+</div>
+<div class="col-m-10">
+  <app-flight *ngFor="let flight of (flights| filter: filterList)" [data]="flight"></app-flight>
 </div>
 
-<app-flight *ngFor="let flight of (flights| filter: filterList)" [data]="flight"></app-flight>
 

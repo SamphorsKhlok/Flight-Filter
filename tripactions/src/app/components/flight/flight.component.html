@@ -1,45 +1,42 @@
 <div class="flight">
-  <!--assume there is no image for the now-->
-  <div class="col-m-1" style="padding: 0px">
-    <img width="100%" [src]="data['flight']['flightSegments'][0].highResAirlineLogoUrl" style="float: left" alt="image">
+  <!-- just go with meduin screen size for now -->
+  <div class="col-m-1 no-padding">
+    <img class="img" [src]="data['flight']['flightSegments'][0].highResAirlineLogoUrl" alt="image">
   </div>
 
   <!--for flight info-->
-  <div class="col-m-2">
-    <div>{{data['flight']['flightSegments'][0]['airlineName']}}</div>
-    <div>{{data['flight']['flightSegments'][0]['departureDateAndTime'] | mydate}}</div>
-    <div>
+  <div class="col-m-2 flightInfo">
+    <div class="bold">{{data['flight']['flightSegments'][0]['airlineName']}}</div>
+    <div class="bold">{{data['flight']['flightSegments'][0]['departureDateAndTime'] | mydate}}</div>
+    <div class="lightGray">
       <span *ngFor="let f of data['flight']['flightSegments']; let i= index" style="display: inline-block" >
-         {{ f.airlineCode}}{{ f.flightNumber}}{{ i == data['flight']['flightSegments'].length-1? '':'*' }}
+         {{ f.airlineCode}}{{ f.flightNumber}}{{ i == data['flight']['flightSegments'].length-1? '':' &#8226;&#160;' }}
       </span>
     </div>
   </div>
 
   <!--for stop-->
   <!--mydate is the custom pipe to transform the date and time format-->
-  <div class="col-m-4">
-    <div>
-      <span>{{data['flight']['flightSegments'][0]['departureAirportCode']}} </span>
-      <span> - {{data['flight']['flightSegments'].length-1 ? data['flight']['flightSegments'].length-1+' Stop': 'Non Stop' }} - </span>
-      <span>{{data['flight']['flightSegments'][data.flight.flightSegments.length-1]['arrivalDateAndTime'] | mydate}}</span>
-      <span> {{data['flight']['flightSegments'][data.flight.flightSegments.length-1]['arrivalAirportCode']}}</span>
-    </div>
-    <!--<span style="display: inline-block" *ngFor="let f of data['flight']['flightSegments']">-->
-        <!--{{f['airlineName']}}-->
-    <!--</span>-->
+  <div class="col-m-5">
+    <span class="lightGray">{{data['flight']['flightSegments'][0]['departureAirportCode']}} </span>
+    <span style="display: inline-block; font-weight: bold">&ndash;</span>
+    <span style="display: inline-block" class="stopBorder">{{data['flight']['flightSegments'].length-1 ? data['flight']['flightSegments'].length-1+' Stop': 'Non Stop' }}</span><!-- -->
+    <span style="display: inline-block; font-weight: bold">&ndash;</span>
+    <span class="bold"> {{data['flight']['flightSegments'][data.flight.flightSegments.length-1]['arrivalDateAndTime'] | mydate}}</span>
+    <span class="lightGray"> {{data['flight']['flightSegments'][data.flight.flightSegments.length-1]['arrivalAirportCode']}}</span>
   </div>
 
   <!--for duration-->
   <!--can custom duration pipe to display the clean h and  min-->
-  <div class="col-m-3">
-    <div>Duration</div>
-    <div>{{data['flight']['durationMinutes'] | duration }}</div>
+  <div class="col-m-1 duration">
+    <div class="lightGray">Duration</div>
+    <div class="bold">{{data['flight']['durationMinutes'] | duration }}</div>
   </div>
 
   <!--price and view-->
   <!--use pipe currency-->
-  <div class="col-m-2">
-    {{data['priceInfo']['totalPrice'] | currency}}
-    <div><button mat-stroked-button>View</button></div>
+  <div class="col-m-3 price">
+    <div class="priceTag">{{data['priceInfo']['totalPrice'] | price }}</div>
+    <div><button class="btn">View</button></div>
   </div>
 </div>

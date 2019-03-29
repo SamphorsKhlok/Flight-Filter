@@ -4,20 +4,113 @@
   box-sizing: border-box;
 }
 
-.flight {
+.filter {
+  background-color: #f2f2f2;
   border: 1px solid #ccc;
-  /*padding: 5px;*/
-  margin-bottom: 5px;
-  display: block;
-  overflow: auto;
 }
 
+.filter > p {
+  margin-left: 10px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.filter .item {
+  margin-left: 10px;
+  height: 30px;
+}
+
+.filter .item .price {
+  float: right;
+}
+
+.flight {
+  border: 1px solid #ccc;
+  overflow: auto;
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.img {
+  float: left;
+  width: 100%;
+}
 
 [class*='col-']{
   width: 100%;
-  padding: 10px;
   float: left;
+  margin: 0;
 }
+
+.flightInfo{
+  margin-left: 10px;
+}
+
+.no-padding{
+  padding: 0px;
+}
+
+.bold{
+  color:black;
+  font-weight: bold;
+}
+
+.lightGray{
+  color: gray;
+}
+
+.price{
+  text-align: right;
+  margin-right: 10px;
+}
+
+.priceTag{
+  font-size: 25px;
+  color: black;
+}
+
+.stopBorder{
+  border: 2px solid black;
+  border-radius: 20px 20px 20px 20px;
+}
+
+.stopBorder:before {
+  content: "";
+  color: black;
+  margin-left: 15px;
+}
+
+.stopBorder:after {
+  content: "";
+  color: black;
+  margin-right: 15px;
+}
+
+.duration{
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  font-size: 18px;
+  text-align: center;
+}
+
+.btn {
+  font-size: 15px;
+  color: red;
+  height: 80%;
+  width: 60%;
+  border: 2px solid red;
+  border-radius: 5px 5px 5px 5px;
+  padding: 10px;
+  margin: 5px;
+}
+
+.btn:active {
+  color: black;
+  border: 2px solid black;
+}
+
+/*use only meduim for now*/
 
 @media only screen and (min-width: 550px){
   .col-sx-1 {width: 8.33% }
